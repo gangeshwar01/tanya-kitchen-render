@@ -29,13 +29,8 @@ DEBUG = os.environ.get('DEBUG', '0') == '1'
 
 ALLOWED_HOSTS = []
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-# Allow localhost for local development
-if DEBUG:
-    ALLOWED_HOSTS.extend(['localhost', '127.0.0.1'])
+
 
 
 # Application definition
@@ -147,8 +142,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # CSRF / HTTPS (Render)
 CSRF_TRUSTED_ORIGINS = []
-if RENDER_EXTERNAL_HOSTNAME:
-    CSRF_TRUSTED_ORIGINS.append(f'https://{RENDER_EXTERNAL_HOSTNAME}')
+
 
 # Custom user model
 AUTH_USER_MODEL = 'messmetapp.User'
